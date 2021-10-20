@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "609907140937",
+    "project_id": "khuddar-fa589",
+    "storage_bucket": "khuddar-fa589.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609907140937:android:f5daccd04847af0a9d1298",
+        "android_client_info": {
+          "package_name": "com.webzards.khuddar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609907140937-ht9eqflgbtvqk16tabjc96q0adr2qjsa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWVWi2lrjPk_S7JLnLLx-Y0fnAdKid3mI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609907140937-ht9eqflgbtvqk16tabjc96q0adr2qjsa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

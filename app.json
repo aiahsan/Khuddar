@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "KHUDDAR",
-    "slug": "KHUDDAR",
+    "name": "khuddar",
+    "slug": "khuddar",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,11 +17,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.webzards.khuddar"
     },
     "android": {
-      "package": "com.webzards.khuddar",
-      "versionCode": 1
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "googleServicesFile": "./google-services.json",
+      "package": "com.webzards.khuddar"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -1,36 +1,74 @@
-
-
-
-import React,{useContext,useEffect} from 'react';
-import MainScreen from './src/screens/mainScree'
-import { StatusBar } from 'react-native';
-import Coffin from './src/screens/funeralScreens/Coffin';
-import Shaddi from './src/screens/shadiScreens/shadi';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { enableScreens } from 'react-native-screens';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import * as Font from 'expo-font';
-let customFonts = {
-  'Inter-Black': require('./assets/fonts/Ubuntu-Bold.ttf'),
-  'Ubuntu-Medium': require('./assets/fonts/Ubuntu-Medium.ttf'),
-  'Ubuntu-Bold': require('./assets/fonts/Ubuntu-Bold.ttf'),
-  'Ubuntu-Regular': require('./assets/fonts/Ubuntu-Regular.ttf'),
+import { NavigationContainer } from '@react-navigation/native';
+import AppStack from './src/navigation/appNavigation';
+import { Provider } from "react-redux";
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { store, persistor } from './src/utiles/reduxConfig/persistConfig'
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#21c5df',
+    accent: 'white',
+
+  },
 };
+enableScreens();
 
 export default function App() {
-  console.disableYellowBox = true;
+  //  let [page,setPage]= React.useState({});
 
-//<Coffin/><Shaddi/>
 
-const loadFontAsync=  async ()=> {
-   await Font.loadAsync(customFonts);
-    }
-    useEffect(()=>{
-      loadFontAsync()
-    },[]);
+  const [loaded] = Font.useFonts({
+    PoppinsBlack: require('./assets/fonts/PoppinsBlack.ttf'),
+    PoppinsBlackItalic: require('./assets/fonts/PoppinsBlackItalic.ttf'),
+    PoppinsBold: require('./assets/fonts/PoppinsBold.ttf'),
+    PoppinsBoldItalic: require('./assets/fonts/PoppinsBoldItalic.ttf'),
+    PoppinsExtraLight: require('./assets/fonts/PoppinsExtraLight.ttf'),
+    PoppinsExtraLightItalic: require('./assets/fonts/PoppinsExtraLightItalic.ttf'),
+    PoppinsItalic: require('./assets/fonts/PoppinsItalic.ttf'),
+    PoppinsLight: require('./assets/fonts/PoppinsLight.ttf'),
+    PoppinsLightItalic: require('./assets/fonts/PoppinsLightItalic.ttf'),
+    PoppinsMedium: require('./assets/fonts/PoppinsMedium.ttf'),
+    PoppinsMediumItalic: require('./assets/fonts/PoppinsMediumItalic.ttf'),
+    PoppinsRegular: require('./assets/fonts/PoppinsRegular.ttf'),
+    PoppinsSemiBold: require('./assets/fonts/PoppinsSemiBold.ttf'),
+    PoppinsSemiBoldItalic: require('./assets/fonts/PoppinsSemiBoldItalic.ttf'),
+    PoppinsThin: require('./assets/fonts/PoppinsThin.ttf'),
+    PoppinsThinItalic: require('./assets/fonts/PoppinsThinItalic.ttf'),
+    PoppinsExtraBold: require('./assets/fonts/PoppinsExtraBold.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
   return (
-<>
-<StatusBar/>
-<MainScreen/>
-</>
+    <PaperProvider theme={theme}>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <NavigationContainer>
+            <AppStack />
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
+
+    </PaperProvider>
+
   );
 }
-//
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
